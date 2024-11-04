@@ -8,22 +8,28 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { FormGroup } from 'react-bootstrap';
 
-export function Signup (props) {
-    const [ password, setPassword ] = useState('')
-    const [ validpassword, setValidPassword ] = useState(false)
+export function Signup(props) {
+    const [password, setPassword] = useState('')
+    const [validpassword, setValidPassword] = useState(false)
+    const [email, setEmail] = useState('')
+    const [validemail, setValidEmail] = useState(false)
+    const [password2, setPassword2] = useState('')
+    const [validpassword2, setValidPassword2] = useState(false)
 
     const navigate = useNavigate()
+
     const reqNumbers = "0123456789"
     const reqChars = "abcefghijklmnopqrstuvwxyz"
     const reqCaps = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    const reqSymbols = "!@#?$%^&*()_-+="
+    const reqSymbols = "!@#?$%^&*()_-+=/|<>"
 
     const includesNumbers = () => {
         const numbersArray = reqNumbers.split('')
         let result = false
         numbersArray.forEach((number) => {
-            if(password.includes(number)) {
+            if (password.includes(number)) {
                 result = true
             }
         })
@@ -34,7 +40,7 @@ export function Signup (props) {
         const charsArray = reqChars.split('')
         let result = false
         charsArray.forEach((char) => {
-            if(password.includes(char)) {
+            if (password.includes(char)) {
                 result = true
             }
         })
@@ -45,7 +51,7 @@ export function Signup (props) {
         const capsArray = reqCaps.split('')
         let result = false
         capsArray.forEach((caps) => {
-            if(password.includes(caps)) {
+            if (password.includes(caps)) {
                 result = true
             }
         })
@@ -56,7 +62,7 @@ export function Signup (props) {
         const symbolsArray = reqSymbols.split('')
         let result = false
         symbolsArray.forEach((symbols) => {
-            if(password.includes(symbols)) {
+            if (password.includes(symbols)) {
                 result = true
             }
         })
@@ -64,29 +70,46 @@ export function Signup (props) {
     }
 
     useEffect(() => {
-        if(
+        if (email.indexOf('@') > 0 && email.indexOf('.') > 0) {
+            setValidEmail(true)
+        }
+        else {
+            setValidEmail(false)
+        }
+    }, [email])
+
+    useEffect(() => {
+        if (
             (password.length >= 8 && password.length <= 15)
-            && includesNumbers() == true 
+            && includesNumbers() == true
             && includesChars() == true
             && includesCaps() == true
             && includesSymbols() == true
-        )
-        {
+        ) {
             setValidPassword(true)
         }
         else {
             setValidPassword(false)
         }
-    } , [password])
+    }, [password])
+
+    useEffect(() => {
+        if(password2 == password && validpassword) {
+            setValidPassword2(true)
+        }
+        else {
+            setValidPassword2(false)
+        }
+    }, [password2])
 
     const signUpUser = (event) => {
         event.preventDefault()
         const formdata = new FormData(event.target)
         const email = formdata.get("email")
         const password = formdata.get("password")
-        createUserWithEmailAndPassword( props.authapp, email, password )
-        .then( (response) => Navigate("/") )
-        .catch( (error) => console.log(error) )
+        createUserWithEmailAndPassword(props.authapp, email, password)
+            .then((response) => Navigate("/"))
+            .catch((error) => console.log(error))
     }
     return (
         <>
@@ -101,6 +124,7 @@ export function Signup (props) {
                                     type="email"
                                     placeholder="you@domain.com"
                                     name="email"
+                                    onChange={(event) => setValidEmail(event.target.value)}
                                 />
                             </Form.Group>
                             <Form.Group className="mt-3">
@@ -112,15 +136,25 @@ export function Signup (props) {
                                     value={password}
                                     onChange={(event) => setPassword(event.target.value)}
                                 />
-                                <Form.Text>
-                                    Password must contain uppercase, lowercase, a number and a symbol and must be between 8 and 15 characters long.
-                                </Form.Text>
                             </Form.Group>
-                            <Button 
-                            type="submit" 
-                            variant="dark" 
-                            className="my-3 mx-auto d-block w-100"
-                            disabled = {(validpassword) ? false : true}
+                            <FormGroup className="mt-3">
+                                <Form.Label>Confirm Password</Form.Label>
+                                <Form.Control
+                                    type="password"
+                                    placeholder="Confirm Password"
+                                    name="password2"
+                                    value={password2}
+                                    onChange={(event) => setPassword2(event.target.value)}
+                                />
+                                <Form.Text>
+                                    Password must contain an uppercase, a lowercase, a number, and a symbol like {reqSymbols} and must be between 8 and 15 characters long.
+                                </Form.Text>
+                            </FormGroup>
+                            <Button
+                                type="submit"
+                                variant="dark"
+                                className="my-3 mx-auto d-block w-100"
+                                disabled={(validemail && validpassword && validpassword2) ? false : true}
                             >
                                 Sign Up
                             </Button>
