@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
+import { Link } from "react-router-dom"
 import { collection, getDocs } from "firebase/firestore"
 
 export function Home(props) {
@@ -23,7 +24,6 @@ export function Home(props) {
             booksArray.push(book)
         })
         setBookData(booksArray)
-        console.log(booksArray)
     }
 
     useEffect(() => {
@@ -35,18 +35,26 @@ export function Home(props) {
 
     const Books = bookdata.map((book) => {
         return (
-            <Col md={3}>
+            <Col md={1}>
                 <Card>
                     <Card.Img 
                         variant="top"
-                        src={"/book_covers/" + book.cover}
+                        src={book.cover}
                         style={{maxWidth:"100%"}}
                     />
                     <Card.Body>
                         <Card.Title>{book.title}</Card.Title>
                         <Card.Text>
-                            A book by {book.author}
+                            {book.author}
                         </Card.Text>
+                        <Button
+                            as={Link}
+                            variant="dark"
+                            className="w-100"
+                            to={"/details/" + book.id}
+                        >
+                            Details
+                        </Button>
                     </Card.Body>
                 </Card>
             </Col>
@@ -57,7 +65,7 @@ export function Home(props) {
         <Container fluid>
             <Row>
                 <Col>
-                    <h1>Library System</h1>
+                    <h1>Available Books</h1>
                 </Col>
             </Row>
             <Row>

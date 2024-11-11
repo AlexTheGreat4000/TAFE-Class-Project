@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { AuthContext } from '../contexts/AuthContext';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 export function Header(props) {
     const authState = useContext(AuthContext)
@@ -12,13 +13,13 @@ export function Header(props) {
         return (
             <Navbar expand="lg" bg="dark" data-bs-theme="dark">
                 <Container>
-                    <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+                    <Navbar.Brand href="/">Australian University Library</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="/signup">Signup</Nav.Link>
-                            <Nav.Link href="/signin">Signin</Nav.Link>
+                            <Nav.Link as={Link} to="/">Home</Nav.Link>
+                            <Nav.Link as={Link} to="/signup">Signup</Nav.Link>
+                            <Nav.Link as={Link} to="/signin">Signin</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
@@ -29,12 +30,12 @@ export function Header(props) {
         return (
             <Navbar expand="lg" bg="dark" data-bs-theme="dark">
                 <Container>
-                    <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+                    <Navbar.Brand href="/">Australian University Library</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="/logout">Log Out</Nav.Link>
+                            <Nav.Link as={Link} to="/">Home</Nav.Link>
+                            <Nav.Link as={Link} to="/logout">Log Out</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

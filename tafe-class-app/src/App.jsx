@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import { Routes, Route, Outlet, Link } from "react-router-dom"
-
 import { Header } from './components/Header'
+import { Footer } from './components/Footer'
 import { Signup } from './pages/Signup'
 import { Signin } from './pages/Signin'
 import { Logout } from './pages/Logout'
+import { BookDetail } from './pages/BookDetail'
 import { Home } from './pages/Home'
 import { firebaseConfig } from './config/config'
 import { initializeApp } from "firebase/app"
@@ -13,6 +14,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth"
 import { AuthContext } from './contexts/AuthContext'
 import { getFirestore } from 'firebase/firestore'
 import { FirestoreContext } from './contexts/FirestoreContext'
+import "./App.css"
 
 function App() {
   const [auth, setAuth] = useState()
@@ -40,7 +42,9 @@ function App() {
             <Route path="/Signup" element={<Signup authapp={FirebaseAuth} />} />
             <Route path="/Signin" element={<Signin authapp={FirebaseAuth} />} />
             <Route path="/Logout" element={<Logout authapp={FirebaseAuth} />} />
+            <Route path="/details/:bookId" element={<BookDetail /> } />
           </Routes>
+          <Footer />
         </FirestoreContext.Provider>
       </AuthContext.Provider>
     </>
