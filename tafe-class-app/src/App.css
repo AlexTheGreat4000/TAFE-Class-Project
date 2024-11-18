@@ -7,3 +7,9 @@
 body {
   min-height: 100vh;
 }
+
+.book-cover {
+  aspect-ratio: 3/4;
+  object-fit: contain;
+  object-position: center;
+}

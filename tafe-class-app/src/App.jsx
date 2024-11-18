@@ -7,6 +7,7 @@ import { Signup } from './pages/Signup'
 import { Signin } from './pages/Signin'
 import { Logout } from './pages/Logout'
 import { BookDetail } from './pages/BookDetail'
+import { AddBook } from './pages/admin/AddBook'
 import { Home } from './pages/Home'
 import { firebaseConfig } from './config/config'
 import { initializeApp } from "firebase/app"
@@ -43,6 +44,7 @@ function App() {
             <Route path="/Signin" element={<Signin authapp={FirebaseAuth} />} />
             <Route path="/Logout" element={<Logout authapp={FirebaseAuth} />} />
             <Route path="/details/:bookId" element={<BookDetail /> } />
+            <Route path="/admin/AddBook" element={<AddBook />} />
           </Routes>
           <Footer />
         </FirestoreContext.Provider>
