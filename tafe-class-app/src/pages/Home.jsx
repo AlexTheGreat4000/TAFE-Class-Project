@@ -33,9 +33,10 @@ export function Home(props) {
         }
     }, [booksLoaded])
 
-    const Books = bookdata.map((book) => {
+    //map each book to a component
+    const Books = bookdata.map((book, key) => {
         return (
-            <Col md={1}>
+            <Col md={1} key={key}>
                 <Card>
                     <Card.Img 
                         variant="top"
