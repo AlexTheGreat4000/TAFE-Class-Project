@@ -91,21 +91,21 @@ export function AddBook(props) {
                             <Form.Label>Book Genre</Form.Label>
                             <Form.Select name="genre">
                                 <option>Select Genre</option>
-                                <option value="fiction">Fiction</option>
-                                <option value="dystopian">Dystopian</option>
-                                <option value="romance">Romance</option>
-                                <option value="nonfiction">Non-Fiction</option>
-                                <option value="thriller">Thriller</option>
+                                <option value="Fiction">Fiction</option>
+                                <option value="Dystopian">Dystopian</option>
+                                <option value="Romance">Romance</option>
+                                <option value="Non-Fiction">Non-Fiction</option>
+                                <option value="Thriller">Thriller</option>
                             </Form.Select>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Lannguage</Form.Label>
                             <Form.Select name="language">
                                 <option>Select Language</option>
-                                <option value="ennglish">English</option>
-                                <option value="french">French</option>
-                                <option value="italian">Italian</option>
-                                <option value="hindi">Hindi</option>
+                                <option value="English">English</option>
+                                <option value="French">French</option>
+                                <option value="Italian">Italian</option>
+                                <option value="Hindi">Hindi</option>
                             </Form.Select>
                         </Form.Group>
                         <Button type="submit" variant="primary" className="mt-4 w-100">Add Book</Button>
