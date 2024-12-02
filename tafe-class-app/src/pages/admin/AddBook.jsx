@@ -7,7 +7,8 @@ import Alert from "react-bootstrap/Alert"
 
 import { collection, addDoc } from "firebase/firestore"
 import { FirestoreContext } from "../../contexts/FirestoreContext"
-import { useContext, useState } from "react"
+import { useContext, useState, useEffect } from "react"
+import { useNavigate } from 'react-router-dom';
 
 export function AddBook(props) {
     const [show, setShow] = useState(false)
@@ -16,6 +17,13 @@ export function AddBook(props) {
     let alertType = 'success'
 
     const db = useContext(FirestoreContext)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if(props.mode == false) {
+            navigate('/signin')
+        }
+    }, [props.mode])
 
     const createBook = async(event) => {
         event.preventDefault()
@@ -51,7 +59,7 @@ export function AddBook(props) {
                 <Col md={{ span: 4, offset: 4 }}>
                     <Form id="add-book-form" onSubmit={(evt) => createBook(evt)}>
                         <h2 className="mt-4">Add a book</h2>
-                        <Form.Group>
+                        <Form.Group className="mt-2">
                             <Form.Label>Book Title</Form.Label>
                             <Form.Control
                                 type="text"
@@ -60,7 +68,7 @@ export function AddBook(props) {
                                 required
                             />
                         </Form.Group>
-                        <Form.Group>
+                        <Form.Group className="mt-2">
                             <Form.Label>Book Author</Form.Label>
                             <Form.Control
                                 type="text"
@@ -69,7 +77,7 @@ export function AddBook(props) {
                                 required
                             />
                         </Form.Group>
-                        <Form.Group>
+                        <Form.Group className="mt-2">
                             <Form.Label>Book Publisher</Form.Label>
                             <Form.Control
                                 type="text"
@@ -78,16 +86,52 @@ export function AddBook(props) {
                                 required
                             />
                         </Form.Group>
-                        <Form.Group>
+                        <Form.Group className="mt-2">
+                            <Form.Label>ISBN (Old)</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="cover"
+                                placeholder="10 Digit ISBN Number"
+                                required
+                            />
+                        </Form.Group>
+                        <Form.Group className="mt-2">
+                            <Form.Label>ISBN (New)</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="cover"
+                                placeholder="13 Digit ISBN Number"
+                                required
+                            />
+                        </Form.Group>
+                        <Form.Group className="mt-2">
+                            <Form.Label>Pages</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="cover"
+                                placeholder="Number of Pages"
+                                required
+                            />
+                        </Form.Group>
+                        <Form.Group className="mt-2">
                             <Form.Label>Cover Image</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="cover"
-                                placeholder="Filename of cover image"
+                                placeholder="Link to Cover Image"
                                 required
                             />
                         </Form.Group>
-                        <Form.Group>
+                        <Form.Group className="mt-2">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="cover"
+                                placeholder="Book Description"
+                                required
+                            />
+                        </Form.Group>
+                        <Form.Group className="mt-2">
                             <Form.Label>Book Genre</Form.Label>
                             <Form.Select name="genre">
                                 <option>Select Genre</option>
@@ -98,8 +142,8 @@ export function AddBook(props) {
                                 <option value="Thriller">Thriller</option>
                             </Form.Select>
                         </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Lannguage</Form.Label>
+                        <Form.Group className="mt-2">
+                            <Form.Label>Language</Form.Label>
                             <Form.Select name="language">
                                 <option>Select Language</option>
                                 <option value="English">English</option>

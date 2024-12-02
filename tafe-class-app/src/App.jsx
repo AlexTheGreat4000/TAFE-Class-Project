@@ -20,6 +20,7 @@ import "./App.css"
 
 function App() {
   const [auth, setAuth] = useState()
+  const [admin, setAdmin] = useState(false)
 
   const FirebaseApp = initializeApp(firebaseConfig)
   const FirebaseAuth = getAuth(FirebaseApp)
@@ -38,15 +39,15 @@ function App() {
     <>
       <AuthContext.Provider value={auth}>
         <FirestoreContext.Provider value={Firestore}>
-          <Header />
+          <Header mode={admin} />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Signup" element={<Signup authapp={FirebaseAuth} />} />
-            <Route path="/Signin" element={<Signin authapp={FirebaseAuth} />} />
+            <Route path="/Signin" element={<Signin authapp={FirebaseAuth} admin={setAdmin} />} />
             <Route path="/Logout" element={<Logout authapp={FirebaseAuth} />} />
             <Route path="/details/:bookId" element={<BookDetail /> } />
-            <Route path="/admin/addbook" element={<AddBook />} />
-            <Route path="/admin/listloans" element={<ListLoans />} />
+            <Route path="/admin/addbook" element={<AddBook mode={admin}/>} />
+            <Route path="/admin/listloans" element={<ListLoans mode={admin}/>} />
           </Routes>
           <Footer />
         </FirestoreContext.Provider>
