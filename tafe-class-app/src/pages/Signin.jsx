@@ -50,6 +50,8 @@ export function Signin (props) {
         } )
         .catch( (error) => console.log(error) )
     }
+
+    document.title = "Sign In"
     return (
         <>
             <Container>

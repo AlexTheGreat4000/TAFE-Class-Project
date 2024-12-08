@@ -63,6 +63,7 @@ export function Home(props) {
         )
     })
 
+    document.title = "Australian University Library"
     return (
         <Container fluid>
             <Row>

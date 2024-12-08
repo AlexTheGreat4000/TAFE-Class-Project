@@ -111,6 +111,8 @@ export function Signup(props) {
             .then((response) => Navigate("/"))
             .catch((error) => console.log(error))
     }
+
+    document.title = "Sign Up"
     return (
         <>
             <Container>

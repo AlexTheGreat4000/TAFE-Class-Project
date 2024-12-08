@@ -85,6 +85,7 @@ export function ListLoans(props) {
         )
     })
 
+    document.title = "Loans"
     return (
         <Container>
             <h1>List of Loans</h1>

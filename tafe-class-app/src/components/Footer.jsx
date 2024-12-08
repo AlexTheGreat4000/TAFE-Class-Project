@@ -7,7 +7,7 @@ export function Footer(props) {
         <Container fluid>
             <Row>
                 <Col>
-                    <h5>Footer</h5>
+                    <p className="text-center pt-4">Copyright 2024 © Australia University Library. Website made by Gelos Enterprises</p>
                 </Col>
             </Row>
         </Container>

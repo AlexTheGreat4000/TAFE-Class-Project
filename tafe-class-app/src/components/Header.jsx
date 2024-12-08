@@ -1,7 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { AuthContext } from '../contexts/AuthContext';
 import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -9,30 +8,48 @@ import { Link } from 'react-router-dom';
 export function Header(props) {
     const authState = useContext(AuthContext)
 
-    console.log(props.mode)
-
     if (!authState) {
         return (
             <Navbar expand="lg" bg="dark" data-bs-theme="dark">
                 <Container>
-                    <Navbar.Brand href="/">Australian University Library</Navbar.Brand>
+                    <Navbar.Brand href="/">
+                        <img
+                            src="/src/assets/logo.svg"
+                            width="30"
+                            height="30"
+                            className="d-inline-block align-top"
+                            alt="Australian University Library Logo"
+                        />
+                        {" "}
+                        Australian University Library
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link as={Link} to="/">Home</Nav.Link>
-                            <Nav.Link as={Link} to="/signup">Signup</Nav.Link>
-                            <Nav.Link as={Link} to="/signin">Signin</Nav.Link>
+                            <Nav.Link as={Link} to="/signup">Sign Up</Nav.Link>
+                            <Nav.Link as={Link} to="/signin">Sign In</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
         )
     }
-    else if(authState && props.mode == false) {
+    else if (authState && props.mode == false) {
         return (
             <Navbar expand="lg" bg="dark" data-bs-theme="dark">
                 <Container>
-                    <Navbar.Brand href="/">Australian University Library</Navbar.Brand>
+                    <Navbar.Brand href="/">
+                        <img
+                            src="/src/assets/logo.svg"
+                            width="30"
+                            height="30"
+                            className="d-inline-block align-top"
+                            alt="Australian University Library Logo"
+                        />
+                        {" "}
+                        Australian University Library
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
@@ -44,11 +61,21 @@ export function Header(props) {
             </Navbar>
         )
     }
-    else if(authState && props.mode == true) {
+    else if (authState && props.mode == true) {
         return (
             <Navbar expand="lg" bg="dark" data-bs-theme="dark">
                 <Container>
-                    <Navbar.Brand href="/">Australian University Library</Navbar.Brand>
+                    <Navbar.Brand href="/">
+                        <img
+                            src="/src/assets/logo.svg"
+                            width="30"
+                            height="30"
+                            className="d-inline-block align-top"
+                            alt="Australian University Library Logo"
+                        />
+                        {" "}
+                        Australian University Library
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">

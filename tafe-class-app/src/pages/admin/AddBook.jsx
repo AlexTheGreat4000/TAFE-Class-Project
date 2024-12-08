@@ -32,7 +32,12 @@ export function AddBook(props) {
             title: fd.get('title'),
             author: fd.get('author'),
             publisher: fd.get('publisher'),
+            yearPublished: fd.get('yearPublished'),
+            isbnOld: fd.get('isbnOld'),
+            isbnNew: fd.get('isbnNew'),
+            pages: fd.get('pages'),
             cover: fd.get('cover'),
+            description: fd.get('description'),
             genre: fd.get('genre'),
             language: fd.get('language'),
             active: true
@@ -53,6 +58,7 @@ export function AddBook(props) {
         setTimeout(() => {setShow(false)}, 3000)
     }
 
+    document.title = "Add Book"
     return (
         <Container>
             <Row>
@@ -87,19 +93,27 @@ export function AddBook(props) {
                             />
                         </Form.Group>
                         <Form.Group className="mt-2">
-                            <Form.Label>ISBN (Old)</Form.Label>
+                            <Form.Label>Year Published</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="cover"
-                                placeholder="10 Digit ISBN Number"
+                                name="yearPublished"
+                                placeholder="Year Published"
                                 required
                             />
                         </Form.Group>
                         <Form.Group className="mt-2">
-                            <Form.Label>ISBN (New)</Form.Label>
+                            <Form.Label>ISBN (10 Digit)</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="cover"
+                                name="isbnOld"
+                                placeholder="10 Digit ISBN Number"
+                            />
+                        </Form.Group>
+                        <Form.Group className="mt-2">
+                            <Form.Label>ISBN (13 Digit)</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="isbnNew"
                                 placeholder="13 Digit ISBN Number"
                                 required
                             />
@@ -108,8 +122,17 @@ export function AddBook(props) {
                             <Form.Label>Pages</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="cover"
+                                name="pages"
                                 placeholder="Number of Pages"
+                                required
+                            />
+                        </Form.Group>
+                        <Form.Group className="mt-2">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="description"
+                                placeholder="Book Description"
                                 required
                             />
                         </Form.Group>
@@ -123,15 +146,6 @@ export function AddBook(props) {
                             />
                         </Form.Group>
                         <Form.Group className="mt-2">
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control
-                                type="text"
-                                name="cover"
-                                placeholder="Book Description"
-                                required
-                            />
-                        </Form.Group>
-                        <Form.Group className="mt-2">
                             <Form.Label>Book Genre</Form.Label>
                             <Form.Select name="genre">
                                 <option>Select Genre</option>
@@ -140,6 +154,8 @@ export function AddBook(props) {
                                 <option value="Romance">Romance</option>
                                 <option value="Non-Fiction">Non-Fiction</option>
                                 <option value="Thriller">Thriller</option>
+                                <option value="Fantasy">Fantasy</option>
+                                <option value="Science Fiction">Science Fiction</option>
                             </Form.Select>
                         </Form.Group>
                         <Form.Group className="mt-2">

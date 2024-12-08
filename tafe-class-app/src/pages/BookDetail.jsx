@@ -95,14 +95,17 @@ export function BookDetail(props) {
                         <h1>{book.title}</h1>
                     </Col>
                     <Col md={6}>
-                        <img className="img-fluid" src={book.cover} />
+                        <img width="500" height="700" src={book.cover} />
                     </Col>
                     <Col md={6}>
-                        <h3>Author: {book.author}</h3>
-                        <h3>Publisher: {book.publisher}</h3>
-                        <h3>Language: {book.language}</h3>
-                        <h3>Genre: {book.genre}</h3>
-                        <h5>Description:</h5>
+                        <h4><b>Author:</b> {book.author}</h4>
+                        <h4><b>Publisher:</b> {book.publisher}</h4>
+                        <h4><b>ISBN:</b> {book.isbnOld}, {book.isbnNew}</h4>
+                        <h4><b>Year Published:</b> {book.yearPublished}</h4>
+                        <h4><b>Pages:</b> {book.pages}</h4>
+                        <h4><b>Language:</b> {book.language}</h4>
+                        <h4><b>Genre:</b> {book.genre}</h4>
+                        <h4><b>Description:</b></h4>
                         <p>{book.description}</p>
                         <BorrowButton />
                     </Col>
@@ -112,8 +115,8 @@ export function BookDetail(props) {
     }
     else {
         return (
-            <div class="spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
+            <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
             </div>
         )
     }
