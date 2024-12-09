@@ -124,7 +124,7 @@ export function Signup(props) {
                                 <Form.Label>Email</Form.Label>
                                 <Form.Control
                                     type="email"
-                                    placeholder="you@domain.com"
+                                    placeholder="Email"
                                     name="email"
                                     onChange={(event) => setValidEmail(event.target.value)}
                                 />
@@ -133,7 +133,7 @@ export function Signup(props) {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control
                                     type="password"
-                                    placeholder="Minimum 8 characters"
+                                    placeholder="Password"
                                     name="password"
                                     value={password}
                                     onChange={(event) => setPassword(event.target.value)}

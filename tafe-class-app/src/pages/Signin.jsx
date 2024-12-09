@@ -63,7 +63,7 @@ export function Signin (props) {
                                 <Form.Label>Email</Form.Label>
                                 <Form.Control
                                     type="email"
-                                    placeholder="you@domain.com"
+                                    placeholder="Email"
                                     name="email"
                                 />
                             </Form.Group>
@@ -71,7 +71,7 @@ export function Signin (props) {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control
                                     type="password"
-                                    placeholder="minimum 6 characters"
+                                    placeholder="Password"
                                     name="password"
                                 />
                             </Form.Group>
