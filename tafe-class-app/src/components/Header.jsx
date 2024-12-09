@@ -41,7 +41,7 @@ export function Header(props) {
                 <Container>
                     <Navbar.Brand href="/">
                         <img
-                            src="/src/assets/logo.svg"
+                            src="https://img.icons8.com/?size=94&id=ADLVLEVwdHGD&format=png"
                             width="30"
                             height="30"
                             className="d-inline-block align-top"
@@ -67,7 +67,7 @@ export function Header(props) {
                 <Container>
                     <Navbar.Brand href="/">
                         <img
-                            src="/src/assets/logo.svg"
+                            src="https://img.icons8.com/?size=94&id=ADLVLEVwdHGD&format=png"
                             width="30"
                             height="30"
                             className="d-inline-block align-top"
